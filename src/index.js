@@ -5,7 +5,7 @@ import App from './App';
 import Home from './components/Home';
 
 ReactDOM.render(
-  
     <Home />,
   document.getElementById('root')
 );
+
