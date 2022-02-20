@@ -1,7 +1,7 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'http://localhost:3000';
 
 class MyProfile extends React.Component{
   state = {
