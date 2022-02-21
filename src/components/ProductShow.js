@@ -1,53 +1,58 @@
 import axios from "axios";
 import React, {Component} from "react";
 import '../App.css';
-import { useHistory, useParams } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 
-const BASE_PRODUCT_URL = "http://localhost:3000/api/products/"
+const BASE_PRODUCT_URL = "http://localhost:3000/api";
 
 class ProductShow extends React.Component{
 
     
-    // state = {
-    //     resultsProduct: [],
-    //     error: null
+    state = {
+        resultsProduct: [],
+        error: null,
+        loading: false
         
-    // }
-    // componentDidMount(){
-    //     this.revealProduct();
+    }
+    componentDidMount(){
+        this.revealProduct();
 
-    // }
+    }
 
-    // revealProduct = async (product_id) => {
-
-    //     try {
-    //         const res = await axios.get( BASE_PRODUCT_URL + `/${ this.props.match.params.id }` );
-    //         console.log('response', res.data);
-    //         this.setState({
-    //             resultProducts: res.data,
-    //             loading: false  // stop showing loading message
-    //     });
-    //     } catch( err ){
-    //         console.log('Error in search AJAX: ', err);
-    //         this.setState({ error: err, loading: false });
-    //     }
-
-
-
-    // };//revealProduct()
+    revealProduct = async () => {
+        this.setState({loading: true});
+        try {
+            const res = await axios.get( `http://localhost:3000/api/products/${ this.props.match.params.id }`);
+            console.log('response', res.data);
+            this.setState({
+                resultsProduct: res.data,
+                loading: false  // stop showing loading message
+        });
+        } catch( err ){
+            console.log('Error in search AJAX: ', err);
+            this.setState({ error: err, loading: false });
+        }
 
 
 
+    };//revealProduct()
+
+    
     render(){
-
+        
+        // const {loading, error, resultsProduct} = this.state
+        // console.log("resultsProduc", this.state)
+        // if (error){
+        //     return <p>Error loading</p>
+        // }
 
         return(
 
 
             <div>
 
-                Results for "{ this.props.match.params.id }":
+                <h2>Hi</h2>
 
             </div>
 
