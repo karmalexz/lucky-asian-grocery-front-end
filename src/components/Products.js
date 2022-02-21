@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import ProductShow from './ProductShow';
 
 const BASE_PRODUCTS_URL = 'http://localhost:3000/api/products';
 
@@ -52,7 +53,9 @@ class Products extends React.Component{
         description: {p.description} <br />
         price: {p.price} <br />
         stock: {p.stock} <br/>
+        <Link to={ProductShow}>
         <img className="product_image" src={`http://localhost:3000/assets/${p.image}`} alt={p.name} />
+        </Link>
     </li>
     )
   
