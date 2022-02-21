@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import '../App.css';
 
-class 
- extends Component {
+class Cart extends Component {
   render() {
     return (
       <div>
@@ -11,5 +12,4 @@ class
   }
 }
 
-export default 
-;
+export default Cart

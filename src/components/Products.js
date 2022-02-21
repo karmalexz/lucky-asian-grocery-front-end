@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import ProductShow from './ProductShow';
+import { prettyDOM } from '@testing-library/react';
 
 const BASE_PRODUCTS_URL = 'http://localhost:3000/api/products';
 
@@ -52,7 +54,9 @@ class Products extends React.Component{
         description: {p.description} <br />
         price: {p.price} <br />
         stock: {p.stock} <br/>
-        <img className="product_image" src={`http://localhost:3000/assets/${p.image}`} alt={p.name} />
+        <Link to={`./products/${p.id}`}>
+          <img className="product_image" src={`http://localhost:3000/assets/${p.image}`} alt={p.name} />
+        </Link>
     </li>
     )
   
