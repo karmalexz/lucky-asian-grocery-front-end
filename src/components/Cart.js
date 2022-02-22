@@ -53,7 +53,9 @@ class Cart extends React.Component {
       <img className="cartImage" src={`http://localhost:3000/assets/${this.matchImage(c.product_id).image}`} alt="productName" />
       <p>Name:{this.matchImage(c.product_id).name}</p>
       <p>QTY:{c.qty}</p>
+      
 
+      
 
 
 

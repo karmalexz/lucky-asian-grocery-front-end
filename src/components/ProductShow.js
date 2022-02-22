@@ -63,11 +63,12 @@ class ProductShow extends React.Component{
 
         return(
 
+            // https://res.cloudinary.com/christekh/image/upload/${data.public_id}.jpg
 
             <div>
 
                 <h2>{name}</h2>
-                <img className="product_image_show" src={`http://localhost:3000/assets/${image}`} alt={name} />
+                <img className="product_image_show" src={`assets/${image}`} alt={name} />
                 <br/>
                 <strong>Description</strong>
                 <p>{description}</p>
