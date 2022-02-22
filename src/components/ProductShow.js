@@ -10,7 +10,7 @@ class ProductShow extends React.Component{
 
     
     state = {
-        resultsProduct: [],
+        resultsProduct: {},
         error: null,
         loading: false
         
@@ -41,19 +41,34 @@ class ProductShow extends React.Component{
     
     render(){
         
+        const {name, description, image, price, stock} = this.state.resultsProduct;
+
         // const {loading, error, resultsProduct} = this.state
-        // console.log("resultsProduc", this.state)
-        // if (error){
-        //     return <p>Error loading</p>
-        // }
+        // console.log("resultsProduc", this.state.resultsProduct.name)
+        if (this.state.error){
+            return <p>Error loading</p>
+        }
 
         return(
 
 
             <div>
 
-                <h2>Hi</h2>
-
+                <h2>{name}</h2>
+                <img className="product_image_show" src={`http://localhost:3000/assets/${image}`} alt={name} />
+                <br/>
+                <strong>Description</strong>
+                <p>{description}</p>
+                <br/>
+                <strong>Stock</strong>
+                <p>{stock}</p>
+                <strong>Price</strong>
+                <br/>
+                <p>${price}</p>
+                <br/>
+                <form onSubmit={ this.handleSubmit }>
+                    <button type="submit">Add to Cart</button>
+                </form>
             </div>
 
 
