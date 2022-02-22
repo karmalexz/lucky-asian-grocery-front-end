@@ -6,6 +6,7 @@ import Categories from './Categories'
 import Login from './Login'
 import axios from 'axios';
 import MyProfile from './MyProfile'
+import ProductShow from './ProductShow';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -72,6 +73,8 @@ class Home extends Component {
           <Route exact path="/products" component={Products}/>
           <Route exact path="/categories" component={Categories}/>
           <Route exact path='/my_profile' component={MyProfile}/>
+          <Route exact path="/products/:id"  component={ProductShow} />
+
           <Route
             exact path='/login'
             render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}
