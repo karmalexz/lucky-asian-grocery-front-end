@@ -15,7 +15,7 @@ class Home extends Component {
 
   //App state
   state = {
-    currentUser: undefined
+    currentUser: {}
   }
 
   //function to run on component mounting
@@ -74,10 +74,10 @@ class Home extends Component {
           <Route path="/"  component={NavBar} />
           <Route exact path="/products" component={Products}/>
           <Route exact path="/categories" component={Categories}/>
-          <Route exact path='/my_profile' component={MyProfile}/>
+          <Route exact path='/my_profile' component={()=> <MyProfile userId={this.state.currentUser.id} />}/>
           <Route exact path="/products/:id"  component={ProductShow} />
           <Route exact path="/cart"  component={Cart} />
-          <Route exact path="/cart/add/:product_id"  component={Cart} />
+          {/* <Route exact path="/cart/add/:product_id"  component={Cart} /> */}
 
           
 

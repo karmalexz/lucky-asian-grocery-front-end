@@ -13,3 +13,9 @@ class Cart extends React.Component {
 }
 
 export default Cart;
+
+
+
+// should have componentdidmount and get axios request api cart
+// axios get '/api/cart' => 'api_cart_line_items#index'
+

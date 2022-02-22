@@ -24,7 +24,7 @@ class ProductShow extends React.Component{
         this.setState({loading: true});
         try {
             const res = await axios.get( `http://localhost:3000/api/products/${ this.props.match.params.id }`);
-            console.log('response', res.data);
+            console.log('RES.DATA response', res.data);
             this.setState({
                 resultsProduct: res.data,
                 loading: false  // stop showing loading message
@@ -34,9 +34,20 @@ class ProductShow extends React.Component{
             this.setState({ error: err, loading: false });
         }
 
-
-
     };//revealProduct()
+
+    handleSubmit = async (ev) => {
+        ev.preventDefault();
+        console.log('handleSubmit()', this.state.resultsProduct.id)
+        try {
+            const cartRes = await axios.post(`http://localhost:3000/api/cart/add/${this.state.resultsProduct.id}`);
+            this.props.history.push(`/cart`)
+            console.log('SHOW CART DATA', cartRes.data);
+        }catch (err){
+            console.log('Error in search AJAX:', err);
+        }
+
+    }
 
     
     render(){
@@ -44,10 +55,11 @@ class ProductShow extends React.Component{
         const {name, description, image, price, stock} = this.state.resultsProduct;
 
         // const {loading, error, resultsProduct} = this.state
-        // console.log("resultsProduc", this.state.resultsProduct.name)
+        // console.log("resultsProduct", this.state.resultsProduct.name)
         if (this.state.error){
             return <p>Error loading</p>
         }
+
 
         return(
 
