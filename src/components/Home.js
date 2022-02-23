@@ -8,6 +8,7 @@ import axios from 'axios';
 import MyProfile from './MyProfile'
 import ProductShow from './ProductShow';
 import Cart from './Cart';
+import Order from './Order';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -77,6 +78,8 @@ class Home extends React.Component {
           <Route exact path='/my_profile' component={()=> <MyProfile userId={this.state.currentUser.id} />}/>
           <Route exact path="/products/:id"  component={ProductShow} />
           <Route exact path="/cart"  component={Cart} />
+          <Route exact path="/order"  component={Order} />
+
           {/* <Route exact path="/cart/add/:product_id"  component={Cart} /> */}
 
           

@@ -43,7 +43,7 @@ class Products extends React.Component {
   }
 
   render() {
-    const myImage = cld.image(this.state.products.image);
+    // const myImage = cld.image(this.state.products.image);
 
 
     const { loading, error, products } = this.state
