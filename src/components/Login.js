@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import styles from './Login.css'
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -42,25 +43,28 @@ class Login extends React.Component {
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
-        <label>Login Form</label>
-        <br/>
-        <input
-          onChange={this.handleInput}
-          name="email"
-          type="email"
-          placeholder='Enter Email'
-        />
-        <br/>
-        <input
-          onChange={this.handleInput}
-          name="password"
-          type="password"
-          placeholder='Enter Password'
-        />
-        <br/>
-        <button>Login</button>
-      </form>
+      <div className='form-box'>
+        <form onSubmit={this.handleSubmit}>
+          <label className='title'>Login</label>
+          <br/>
+
+          <input
+            onChange={this.handleInput}
+            name="email"
+            type="email"
+            placeholder='Enter Email'
+            />
+          <br/>
+          <input
+            onChange={this.handleInput}
+            name="password"
+            type="password"
+            placeholder='Enter Password'
+            />
+          <br/>
+          <button>Login</button>
+        </form>
+      </div>
 
     ); // return
   }// render

@@ -46,7 +46,12 @@ class Products extends React.Component {
   }
 
   render() {
+<<<<<<< HEAD
     console.log(process.env.REACT_APP_CLOUD_NAME)
+=======
+    // const myImage = cld.image(this.state.products.image);
+
+>>>>>>> 6455b50ad0a11a673bac56dadffbaa6cdc571b7f
 
     const { loading, error, products } = this.state
     // console.log("CHECK Render PRODUCT", this.state)
