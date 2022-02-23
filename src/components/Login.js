@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import styles from './Login.css'
 
@@ -13,6 +13,7 @@ class Login extends React.Component {
   
   handleInput = (ev) => {
     switch(ev.target.name){
+      
       case 'email':
         this.setState({email: ev.target.value})
         break;
