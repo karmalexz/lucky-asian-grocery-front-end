@@ -84,6 +84,43 @@ class Cart extends React.Component {
     
   }//onClickPlus()
 
+  onClickRemove =(lineItemId) =>{
+
+    const arr = this.state.cart;
+
+    const index = arr.findIndex(object => {
+      return object.id === lineItemId;
+    });
+
+    if (index !== -1) {
+        arr.splice(index, 1);
+        this.setState({cart: arr});
+    }
+
+  } //onClickRemove()
+
+  
+  // onClickRemove = (lineItemId) => {
+
+  //   console.log("lineItemId", lineItemId)
+
+  //   console.log("Hii", this.state.cart)
+  // //   this.setState({cart: this.state.cart.map(currentItem => {
+  // //     //use map to see item ID or other items which we ignore 
+  // //     if(currentItem.id === lineItemId){
+  // //       //this is the current we update 
+  // //       //return new object
+  // //       console.log("currentItem.id", currentItem)
+  // //       // return currentItem.splice(currentItem, currentItem.id)
+  // //       // {...currentItem, qty: currentItem.qty + 1}
+  // //       //updated:true if we were smart enough to do it by sending data back tha has been updated
+  // //     }else{
+  // //       return currentItem; //return other cartItems unchanged if it doesnt match the ID
+  // //     }
+  // // })})
+
+  // }
+
   render() {
     const {error, cart} = this.state;
     // console.log('check RENDER', this.state)
@@ -105,7 +142,8 @@ class Cart extends React.Component {
         <button onClick={()=>this.onClickPlus(c.id)}>+</button>
       </p>
       <br />
-      <button>Remove</button>
+      <button onClick={()=>this.onClickRemove(c.id)}>Remove Item</button>
+
 
       </div>
       
