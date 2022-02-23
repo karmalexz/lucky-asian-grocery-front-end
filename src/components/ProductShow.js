@@ -47,7 +47,7 @@ class ProductShow extends React.Component{
             console.log('Error in search AJAX:', err);
         }
 
-    }
+    }//add to cart  handleSubmit
 
     
     render(){
@@ -97,3 +97,6 @@ class ProductShow extends React.Component{
 };// ProductShow class
 
 export default ProductShow
+
+
+
