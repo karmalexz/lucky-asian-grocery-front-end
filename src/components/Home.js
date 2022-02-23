@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import NavBar from './Navbar';
 import Products from './Products';
@@ -6,14 +6,16 @@ import Categories from './Categories'
 import Login from './Login'
 import axios from 'axios';
 import MyProfile from './MyProfile'
+import ProductShow from './ProductShow';
+import Cart from './Cart';
 
 const BASE_URL = 'http://localhost:3000'
 
-class Home extends Component {
+class Home extends React.Component {
 
   //App state
   state = {
-    currentUser: undefined
+    currentUser: {}
   }
 
   //function to run on component mounting
@@ -50,13 +52,14 @@ class Home extends Component {
           <nav>
               {/* Show one of two nav bars depending on if the user is logged in */}
                 {
-                  this.state.currentUser !== undefined
+                  this.state.currentUser
                   ?
                   (
                     <ul>
                       <li>Welcome {this.state.currentUser.name} | </li>
                       <li><Link to='/my_profile'>My Profile</Link></li>
                       <li><Link to='/products'>All of Our Products</Link></li>
+                      <li><Link to='/cart'>Cart</Link></li>
                       <li><Link onClick={this.handleLogout} to='/'>Logout</Link></li>
                     </ul>
                   )
@@ -71,7 +74,13 @@ class Home extends Component {
           <Route path="/"  component={NavBar} />
           <Route exact path="/products" component={Products}/>
           <Route exact path="/categories" component={Categories}/>
-          <Route exact path='/my_profile' component={MyProfile}/>
+          <Route exact path='/my_profile' component={()=> <MyProfile userId={this.state.currentUser.id} />}/>
+          <Route exact path="/products/:id"  component={ProductShow} />
+          <Route exact path="/cart"  component={Cart} />
+          {/* <Route exact path="/cart/add/:product_id"  component={Cart} /> */}
+
+          
+
           <Route
             exact path='/login'
             render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}

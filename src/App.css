@@ -40,3 +40,11 @@
 .product_image{
   width: 100px;
 }
+
+.product_image_show{
+  width: 20vw;
+}
+
+.cartImage{
+  width: 20vw;
+}
