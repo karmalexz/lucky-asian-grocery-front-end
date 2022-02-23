@@ -4,6 +4,9 @@ import axios from 'axios';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import ProductShow from './ProductShow';
 import { prettyDOM } from '@testing-library/react';
+import { AdvancedImage } from '@cloudinary/react';
+import { Cloudinary } from "@cloudinary/url-gen";
+import { cld } from '../config/index'
 
 const BASE_PRODUCTS_URL = 'http://localhost:3000/api/products';
 
@@ -43,8 +46,7 @@ class Products extends React.Component {
   }
 
   render() {
-    const myImage = cld.image(this.state.products.image);
-
+    console.log(process.env.REACT_APP_CLOUD_NAME)
 
     const { loading, error, products } = this.state
     // console.log("CHECK Render PRODUCT", this.state)
@@ -59,7 +61,8 @@ class Products extends React.Component {
         price: {p.price} <br />
         stock: {p.stock} <br />
         <Link to={`./products/${p.id}`}>
-          <img className="product_image" src={`http://localhost:3000/assets/${p.image}`} alt={p.name} />
+        <AdvancedImage cldImg={cld.image(p.image)} />
+
         </Link>
       </li>
     )
