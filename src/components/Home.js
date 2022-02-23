@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import NavBar from './Navbar';
 import Products from './Products';
@@ -11,7 +11,7 @@ import Cart from './Cart';
 
 const BASE_URL = 'http://localhost:3000'
 
-class Home extends Component {
+class Home extends React.Component {
 
   //App state
   state = {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import '../App.css';
 
@@ -38,6 +38,19 @@ class Cart extends React.Component {
     return this.state.product.filter((item)=> item.id === product_id)[0]
   }
 
+  // handleDelete 
+
+
+
+
+
+
+
+ 
+
+
+
+
   render() {
     const {error, cart} = this.state;
     // console.log('check RENDER', this.state)
@@ -52,9 +65,14 @@ class Cart extends React.Component {
       <li key={c.id}>
       <img className="cartImage" src={`http://localhost:3000/assets/${this.matchImage(c.product_id).image}`} alt="productName" />
       <p>Name:{this.matchImage(c.product_id).name}</p>
+      <div>
+      <span>-</span>
       <p>QTY:{c.qty}</p>
-      
+      <span>+</span>
+      <br />
+      <button>Remove</button>
 
+      </div>
       
 
 

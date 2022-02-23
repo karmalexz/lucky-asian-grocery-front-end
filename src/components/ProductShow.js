@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {Component} from "react";
+import React from "react";
 import '../App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
@@ -68,7 +68,7 @@ class ProductShow extends React.Component{
             <div>
 
                 <h2>{name}</h2>
-                <img className="product_image_show" src={`assets/${image}`} alt={name} />
+                <img className="product_image_show" src={`http://localhost:3000/assets/${image}`} alt={name} />
                 <br/>
                 <strong>Description</strong>
                 <p>{description}</p>
