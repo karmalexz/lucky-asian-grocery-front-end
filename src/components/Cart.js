@@ -38,7 +38,9 @@ class Cart extends React.Component {
     return this.state.product.filter((item)=> item.id === product_id)[0]
   }
 
-  // handleDelete 
+  handleDelete = () => {
+    console.log('Try to remove this item')
+  }
 
 
 
