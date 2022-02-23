@@ -10,47 +10,48 @@ import ProductShow from './ProductShow';
 import Cart from './Cart';
 import Order from './Order';
 
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = "http://localhost:3000";
 
 class Home extends React.Component {
 
   //App state
   state = {
-    currentUser: {}
-  }
+    currentUser: {},
+  };
 
   //function to run on component mounting
-  componentDidMount(){
+  componentDidMount() {
     this.setCurrentUser();
   }
 
   //function to set the state to the current logged in user
   setCurrentUser = () => {
     let token = "Bearer " + localStorage.getItem("jwt");
-    axios.get(`${BASE_URL}/users/current`, {
-      headers: {
-        'Authorization': token
-      }
-    })
-    .then(res => {
-      this.setState({currentUser: res.data})
-    })
-    .catch(err => console.warn(err))
-  }
+    axios
+      .get(`${BASE_URL}/users/current`, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((res) => {
+        this.setState({ currentUser: res.data });
+      })
+      .catch((err) => console.warn(err));
+  };
 
   //function to log the user out.
   handleLogout = () => {
-    this.setState({currentUser: undefined})
+    this.setState({ currentUser: undefined });
     localStorage.removeItem("jwt");
-    axios.defaults.headers.common['Authorization'] = undefined;
-  }
-  
+    axios.defaults.headers.common["Authorization"] = undefined;
+  };
+
   render() {
     return (
       <div>
-        
         <Router>
-          <nav>
+          <nav id="navbar">
+            <div className="nav-wrapper ">
               {/* Show one of two nav bars depending on if the user is logged in */}
                 {
                   this.state.currentUser
@@ -71,6 +72,7 @@ class Home extends React.Component {
                     </ul>
                   )
                 }
+                </div>
             </nav>
           <Route path="/"  component={NavBar} />
           <Route exact path="/products" component={Products}/>
@@ -82,13 +84,14 @@ class Home extends React.Component {
 
           {/* <Route exact path="/cart/add/:product_id"  component={Cart} /> */}
 
-          
-
           <Route
-            exact path='/login'
-            render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}
-            />
-          </Router>
+            exact
+            path="/login"
+            render={(props) => (
+              <Login setCurrentUser={this.setCurrentUser} {...props} />
+            )}
+          />
+        </Router>
       </div>
     );
   }
