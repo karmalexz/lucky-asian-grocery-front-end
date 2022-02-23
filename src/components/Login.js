@@ -12,6 +12,7 @@ class Login extends React.Component {
   
   handleInput = (ev) => {
     switch(ev.target.name){
+      
       case 'email':
         this.setState({email: ev.target.value})
         break;
