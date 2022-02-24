@@ -8,8 +8,10 @@ import { AdvancedImage } from '@cloudinary/react';
 import { Cloudinary } from "@cloudinary/url-gen";
 import { cld } from '../config/index'
 import './productindex.css';
+import { image } from '@cloudinary/url-gen/qualifiers/source';
 
 const BASE_PRODUCTS_URL = 'http://localhost:3000/api/products';
+//replace base url with livelink from heroku to get the images
 
 
 class Products extends React.Component {
@@ -48,9 +50,9 @@ class Products extends React.Component {
 
   render() {
     // const myImage = cld.image(this.state.products.image);
-
-
+    
     const { loading, error, products } = this.state
+    console.log('image', products.map(p => cld.image(p.image)));
     // console.log("CHECK Render PRODUCT", this.state)
     if (error) {
       return <p>Error loading</p>
@@ -62,8 +64,16 @@ class Products extends React.Component {
         <strong>Description:</strong> {p.description} <br />
         <strong>Price:</strong> {p.price} <br />
         <strong>Stock:</strong> {p.stock} <br />
-        <Link to={`./products/${p.id}`}>
-        <AdvancedImage cldImg={cld.image(p.image)} />
+
+
+        <Link to={`/products/${p.id}`}>
+          {
+            p.image.startsWith('IMG_')
+            ?
+            <img className="cartImage" src={`http://localhost:3000/assets/${p.image}`} alt={p.name}/>
+            :
+            <AdvancedImage cldImg={cld.image(p.image)} />
+          }
 
         </Link>
       </li>

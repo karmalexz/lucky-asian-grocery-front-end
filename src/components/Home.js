@@ -9,6 +9,7 @@ import MyProfile from './MyProfile'
 import ProductShow from './ProductShow';
 import Cart from './Cart';
 import Order from './Order';
+import Checkout from './Checkout'
 
 const BASE_URL = "http://localhost:3000";
 
@@ -75,12 +76,16 @@ class Home extends React.Component {
                 </div>
             </nav>
           <Route path="/"  component={NavBar} />
+          <Route path="/login"  component={Login} />
+
           <Route exact path="/products" component={Products}/>
           <Route exact path="/categories" component={Categories}/>
-          <Route exact path='/my_profile' component={()=> <MyProfile userId={this.state.currentUser.id} />}/>
+          <Route exact path='/my_profile' component={MyProfile}/>
           <Route exact path="/products/:id"  component={ProductShow} />
           <Route exact path="/cart"  component={Cart} />
-          <Route exact path="/order"  component={Order} />
+          <Route exact path="/orders"  component={Order} />
+          <Route exact path="/orders/:order_line_items_id"  component={Checkout} />
+
 
           {/* <Route exact path="/cart/add/:product_id"  component={Cart} /> */}
 
