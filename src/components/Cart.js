@@ -46,7 +46,7 @@ class Cart extends React.Component {
     // })
 
     try{
-      console.log('thiscart',)
+      // console.log('thiscart')
       const updateRes = await axios.post(`http://localhost:3000/api/cart/update_qty/${ item.product_id}`, {qty:item.qty})
       console.log('update cart Let See Response', updateRes.data)
     }catch(err){
@@ -108,7 +108,9 @@ class Cart extends React.Component {
         if (currentItem.id === lineItemId) {
           //this is the current we update 
           //return new object
-          return { ...currentItem, qty: currentItem.qty + 1 }
+          const newItem = { ...currentItem, qty: currentItem.qty + 1 }
+          this.updateCart(newItem);
+          return newItem
           //POSTREQUEST---------------------------------------------------
 
           //updated:true if we were smart enough to do it by sending data back tha has been updated
@@ -121,6 +123,19 @@ class Cart extends React.Component {
 
   }//onClickPlus()
 
+
+  deleteItem = async (item) => {
+    this.setState({loading: true})
+
+    try{
+      // console.log('thiscart')
+      const deleteRes = await axios.delete(`http://localhost:3000/api/cart/destroy/${ item.product_id}`)
+      console.log('Delete Cart Response', deleteRes.data)
+    }catch(err){
+      console.log('Error deleting cart line item', err)
+    }
+  }//deleteItem()
+
   onClickRemove = (lineItemId) => {
 
     const arr = this.state.cart;
@@ -131,6 +146,7 @@ class Cart extends React.Component {
 
     if (index !== -1) {
       arr.splice(index, 1);
+      this.deleteItem(arr.product_id);
       this.setState({ cart: arr });
       
     }
@@ -139,15 +155,7 @@ class Cart extends React.Component {
 
   handleSubmit = async (ev) => {
     ev.preventDefault();
-    console.log('handleSubmit()', this.state.cart)
-
-    try {
-        const orderRes = await axios.post(`http://localhost:3000/api/order/add/`, this.state.cart);
-        console.log('SHOW CART DATA', orderRes.data);
-        // this.props.history.push(`/order`)
-    }catch (err){
-        console.log('Error in search AJAX:', err);
-    }
+    this.props.history.push(`/order`);
 
   }//handleSubmit()
 
