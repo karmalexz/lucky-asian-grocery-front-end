@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -55,15 +56,15 @@
   padding: 0;
 }
 #navbar {
-  background: burlywood;
-  color: rgb(13, 26, 38);
-  position: fixed;
+  background: rgb(220, 76, 23);
+  width: 100vw;
+  color: yellow;
+  position: absolute;
   top: 0;
   height: 60px;
   line-height: 60px;
-  width:100vw;
   z-index: 10;
-  margin-left: -24em;
+
 }
 
 .nav-wrapper {
@@ -101,7 +102,7 @@
 }
 
 #navbar li a {
-  color: rgb(13, 26, 38);
+  color: yellow;
   display: block;
   font-size: 0.7em;
   height: 50px;
@@ -117,7 +118,7 @@
 
 #navbar li a:hover {
   /* border-bottom: 1px solid rgb(28, 121, 184); */
-  color: rgb(28, 121, 184);
+  color: yellow;
   transition: all 1s ease;
   -webkit-transition: all 1s ease;
 }

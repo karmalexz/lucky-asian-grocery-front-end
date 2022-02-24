@@ -5,6 +5,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 // import { Cloudinary } from "@cloudinary/url-gen";
 import { cld } from '../config/index'
 import { AdvancedImage } from '@cloudinary/react';
+import './productshow.css'
 
 
 
@@ -72,7 +73,7 @@ class ProductShow extends React.Component {
 
             // https://res.cloudinary.com/christekh/image/upload/${data.public_id}.jpg
 
-            <div>
+            <div className='showProduct'>
 
                 <h2>{name}</h2>
         <AdvancedImage cldImg={(myImage)} />
@@ -88,7 +89,7 @@ class ProductShow extends React.Component {
                 <p>${price}</p>
                 <br />
                 <form onSubmit={this.handleSubmit}>
-                    <button type="submit">Add to Cart</button>
+                    <button type="submit" className='addButton'>Add to Cart</button>
                 </form>
             </div>
 

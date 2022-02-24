@@ -7,6 +7,7 @@ import { prettyDOM } from '@testing-library/react';
 import { AdvancedImage } from '@cloudinary/react';
 import { Cloudinary } from "@cloudinary/url-gen";
 import { cld } from '../config/index'
+import './productindex.css';
 
 const BASE_PRODUCTS_URL = 'http://localhost:3000/api/products';
 
@@ -57,10 +58,10 @@ class Products extends React.Component {
 
     const productsList = products.map(p =>
       <li key={p.id}>
-        name: {p.name} <br />
-        description: {p.description} <br />
-        price: {p.price} <br />
-        stock: {p.stock} <br />
+        <strong>Name:</strong> {p.name} <br />
+        <strong>Description:</strong> {p.description} <br />
+        <strong>Price:</strong> {p.price} <br />
+        <strong>Stock:</strong> {p.stock} <br />
         <Link to={`./products/${p.id}`}>
         <AdvancedImage cldImg={cld.image(p.image)} />
 

@@ -60,7 +60,7 @@ class Home extends React.Component {
                     <ul>
                       <li>Welcome {this.state.currentUser.name} | </li>
                       <li><Link to='/my_profile'>My Profile</Link></li>
-                      <li><Link to='/products'>All of Our Products</Link></li>
+                      <li><Link to='/products'>All Products</Link></li>
                       <li><Link to='/cart'>Cart</Link></li>
                       <li><Link onClick={this.handleLogout} to='/'>Logout</Link></li>
                     </ul>
