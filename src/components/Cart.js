@@ -184,7 +184,7 @@ class Cart extends React.Component {
 
   handleSubmit = async (ev) => {
     ev.preventDefault();
-    this.props.history.push(`/order`);
+    this.props.history.push(`/orders`);
 
   }//handleSubmit()
 
@@ -226,7 +226,7 @@ class Cart extends React.Component {
     return (
       <div>
 
-        {cartList}
+        {this.props.hideProductPage || cartList}
 
         {this.props.hideEditControls || <form onSubmit={this.handleSubmit}>
           <button type="submit">Checkout</button>
@@ -239,7 +239,4 @@ class Cart extends React.Component {
 
 export default Cart;
 
-
-//TODO: Make each click do a post request. Then checkout handleSubmit button redirects and doesnt do anything
-//TODO: Possible to make an onchange function which then uses https://www.storyblok.com/tp/how-to-send-multiple-requests-using-axios
 
