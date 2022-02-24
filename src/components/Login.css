@@ -4,7 +4,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: red;
-    background-image:url("/public/background2.png") ;
+    /* background-image:url("/public/background2.png") ; */
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;

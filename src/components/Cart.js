@@ -34,11 +34,20 @@ class Cart extends React.Component {
     }
   }
 
-  updateCart = async () => {
+  updateCart = async (item) => {
     this.setState({loading: true})
-    console.log('check this out', )
+    // console.log('check this out',  this.state.cart)
+    // let cartEmpty = [];
+    // this.state.cart.map((item)=>{
+    //   cartEmpty.push(item.product_id)
+    //   console.log('cartEmpth', cartEmpty)
+    //   return cartEmpty
+    //   // console.log('inidivudal item', item)
+    // })
+
     try{
-      const updateRes = await axios.post(`http://localhost:3000/api/cart/update_qty/${ this.state.cart.product_id }`)
+      console.log('thiscart',)
+      const updateRes = await axios.post(`http://localhost:3000/api/cart/update_qty/${ item.product_id}`, {qty:item.qty})
       console.log('update cart Let See Response', updateRes.data)
     }catch(err){
       console.log('Error loading AJAX')
@@ -69,15 +78,18 @@ class Cart extends React.Component {
         if (currentItem.id === lineItemId) {
           //this is the current we update 
           //return new object
-          return { ...currentItem, qty: currentItem.qty - 1}
+          const newItem = { ...currentItem, qty: currentItem.qty - 1}
+          this.updateCart(newItem); // this updatese backend but doesnt actually change the state which is done in the next line
+          return newItem //the state update
+          //save variable then pss that variable intot he update
           //Question: how to put in post request if return function is here
-
           //updated:true if we were smart enough to do it by sending data back tha has been updated
         } else {
           return currentItem; //return other cartItems unchanged if it doesnt match the ID
         }
         //updateCart function here
       })
+
     })
 
   }//onClickMinus()
@@ -176,7 +188,7 @@ class Cart extends React.Component {
 
         {cartList}
 
-        <form onSubmit={this.updateCart}>
+        <form onSubmit={this.handleSubmit}>
           <button type="submit">Checkout</button>
         </form>
 
@@ -188,5 +200,6 @@ class Cart extends React.Component {
 export default Cart;
 
 
-
+//TODO: Make each click do a post request. Then checkout handleSubmit button redirects and doesnt do anything
+//TODO: Possible to make an onchange function which then uses https://www.storyblok.com/tp/how-to-send-multiple-requests-using-axios
 

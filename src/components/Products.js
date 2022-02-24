@@ -58,13 +58,13 @@ class Products extends React.Component {
         description: {p.description} <br />
         price: {p.price} <br />
         stock: {p.stock} <br />
-        <Link to={`./products/${p.id}`}>
+        <Link to={`/products/${p.id}`}>
           <img className="product_image" src={`http://localhost:3000/assets/${p.image}`} alt={p.name} />
         </Link>
       </li>
     )
 
-
+      //loop copy line item to order line items
     return (
       <div>
         <h1>All Products</h1>
