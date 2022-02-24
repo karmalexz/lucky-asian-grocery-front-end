@@ -3,7 +3,7 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    /* background-color: red; */
     /* background-image:url("/public/background2.png") ; */
     overflow: hidden;
     background-repeat: no-repeat;

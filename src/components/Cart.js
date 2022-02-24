@@ -206,12 +206,12 @@ class Cart extends React.Component {
         <div>
 
           <p>
-            <button onClick={() => this.onClickMinus(c.id)}>-</button>
+            {this.props.hideEditControls || <button onClick={() => this.onClickMinus(c.id)}>-</button>}
             QTY:{c.qty}
-            <button onClick={() => this.onClickPlus(c.id)}>+</button>
+            {this.props.hideEditControls || <button onClick={() => this.onClickPlus(c.id)}>+</button>}
           </p>
           <br />
-            <button onClick={() => this.onClickRemove(c.id)}>Remove Item</button>
+          {this.props.hideEditControls || <button onClick={() => this.onClickRemove(c.id)}>Remove Item</button>}
 
         </div>
 
@@ -225,9 +225,9 @@ class Cart extends React.Component {
 
         {cartList}
 
-        <form onSubmit={this.handleSubmit}>
+        {this.props.hideEditControls || <form onSubmit={this.handleSubmit}>
           <button type="submit">Checkout</button>
-        </form>
+        </form>}
 
       </div>
     );
