@@ -70,7 +70,7 @@ class Products extends React.Component {
             ?
             <img className="cartImage" src={`http://localhost:3000/assets/${p.image}`} alt={p.name}/>
             :
-            <AdvancedImage cldImg={cld.image("w61ahe0msc3sp6zymbv1")} />
+            <AdvancedImage cldImg={cld.image(p.image)} />
           }
 
         </Link>
