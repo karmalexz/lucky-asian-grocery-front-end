@@ -10,7 +10,8 @@ class Cart extends React.Component {
     cart: [],
     product: [],
     loading: false,
-    error: null
+    error: null,
+    showAlert: false
   }
 
   componentDidMount() {
@@ -75,7 +76,7 @@ class Cart extends React.Component {
     this.setState({
       cart: this.state.cart.map(currentItem => {
         //use map to see item ID or other items which we ignore 
-        if (currentItem.id === lineItemId) {
+        if (currentItem.id === lineItemId && currentItem.qty > 1) {
           //this is the current we update 
           //return new object
           const newItem = { ...currentItem, qty: currentItem.qty - 1}
@@ -84,11 +85,13 @@ class Cart extends React.Component {
           //save variable then pss that variable intot he update
           //Question: how to put in post request if return function is here
           //updated:true if we were smart enough to do it by sending data back tha has been updated
-        } else {
+
+          } else {
+          
           return currentItem; //return other cartItems unchanged if it doesnt match the ID
-        }
-        //updateCart function here
-      })
+          }
+      //updateCart function here
+    })
 
     })
 
@@ -128,8 +131,8 @@ class Cart extends React.Component {
     this.setState({loading: true})
 
     try{
-      // console.log('thiscart')
-      const deleteRes = await axios.delete(`http://localhost:3000/api/cart/destroy/${ item.product_id}`)
+      console.log('thiscartdelete', item)
+      const deleteRes = await axios.delete(`http://localhost:3000/api/cart/destroy/${ item}`)
       console.log('Delete Cart Response', deleteRes.data)
     }catch(err){
       console.log('Error deleting cart line item', err)
@@ -137,19 +140,45 @@ class Cart extends React.Component {
   }//deleteItem()
 
   onClickRemove = (lineItemId) => {
+    const newCart = this.state.cart.filter((item)=> {
+      if (lineItemId === item.id){
+        this.deleteItem(item.product_id); //tellint he server we gfound the one that we want to delete
+        return false; //this is the product we want to delete so tell the filter to exclude it
+      }else{
+        return true; //dont delete the item if the condition above is satisfied
+      }
+    });//endoffilter()
 
-    const arr = this.state.cart;
+    this.setState({cart: newCart});
 
-    const index = arr.findIndex(object => {
-      return object.id === lineItemId;
-    });
 
-    if (index !== -1) {
-      arr.splice(index, 1);
-      this.deleteItem(arr.product_id);
-      this.setState({ cart: arr });
+
+    // let arr = [...this.state.cart]; //make a copy of this
+
+
+    // const index = arr.findIndex(object => {
+    //   console.log("OBJECTID LINEITEMUID", object.id, lineItemId)
+    //   return object.id === lineItemId;
+    // });
+
+    // if (index !== -1) {
       
-    }
+    //   // console.log("array to delete", arr.product_id)
+    //   // let productIdDelete;
+    //   // arr.map(productId => {
+    //   //   productIdDelete = productId.product_id
+    //   //   // console.log("PROFUCTID", productId.product_id)
+    //   //   return productIdDelete
+    //   // })
+    //   const productIdDelete = this.state.cart[index].product_id
+
+    //   this.deleteItem(productIdDelete);
+    //   console.log("index", index)
+    //   arr.splice(index, 1);
+    //   this.setState({ cart: arr });
+      
+    // }
+
 
   } //onClickRemove()
 
