@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import '../App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import { Cloudinary } from "@cloudinary/url-gen";
+// import { Cloudinary } from "@cloudinary/url-gen";
 import { cld } from '../config/index'
 import { AdvancedImage } from '@cloudinary/react';
 
