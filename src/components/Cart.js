@@ -203,6 +203,8 @@ class Cart extends React.Component {
       <li key={c.id}>
         <img className="cartImage" src={`http://localhost:3000/assets/${c.product.image}`} alt="productName" />
         <p>Name:{c.product.name}</p>
+        <p>Price:{c.product.price}</p>
+
         <div>
 
           <p>
@@ -210,6 +212,7 @@ class Cart extends React.Component {
             QTY:{c.qty}
             {this.props.hideEditControls || <button onClick={() => this.onClickPlus(c.id)}>+</button>}
           </p>
+          
           <br />
           {this.props.hideEditControls || <button onClick={() => this.onClickRemove(c.id)}>Remove Item</button>}
 

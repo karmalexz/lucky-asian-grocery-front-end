@@ -8,11 +8,6 @@ import Cart from './Cart'
 const BASE_ORDER_URL = "http://localhost:3000/api/order/"
 class Order extends React.Component {
 
-    state = {
-        order: [],
-        loading: [],
-        error: []
-    }
 
     // componentDidMount(){
     //     this.fetchCart()
@@ -33,6 +28,8 @@ class Order extends React.Component {
         name: '',
         address: '',
         payment: '',
+        error: '',
+        loading: '',
         cart: []
     };
 
@@ -51,27 +48,35 @@ class Order extends React.Component {
     }
 
 
-    handleSubmit = (ev) => {
+    handleSubmit = async (ev) => {
         ev.preventDefault();
         console.log('submit', this.state);
-        this.fetchCart();
-    }
-
-
-    fetchCart = async () => {
-
+        // this.fetchCart();
+        //axios request to backend
         try{
-            const res = await axios.get(BASE_ORDER_URL);
-            console.log('CART response:', res.data);
-            // debugger;
-            this.setState({
-                cart: res.data
-            });
-        } catch(err){
-            console.log('Error Loading AJAX', err);
-            // this.setState({error: err});
-        }
-    }; //fetchFlights()
+            const orderRes = await axios.post(`http://localhost:3000/orders`, this.state)
+            console.log('Order Create Response', orderRes.data)
+          }catch(err){
+            console.log('Error Creating Order', err)
+          }
+
+    } //handleSubmit()
+
+
+    // fetchCart = async () => {
+
+    //     try{
+    //         const res = await axios.get(BASE_ORDER_URL);
+    //         console.log('CART response:', res.data);
+    //         // debugger;
+    //         this.setState({
+    //             cart: res.data
+    //         });
+    //     } catch(err){
+    //         console.log('Error Loading AJAX', err);
+    //         // this.setState({error: err});
+    //     }
+    // }; //fetchFlights()
 
     render() {
 
@@ -90,7 +95,7 @@ class Order extends React.Component {
                     <br /><br />
                     <input type="text" placeholder="payment type" onChange={this.handleInputPayment} />
                     <br /><br />
-                    <button>Pay Now</button>
+                    <button>Finalise Payment</button>
 
                 </form>
 
