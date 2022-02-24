@@ -3,6 +3,8 @@ import '../App.css';
 import axios from 'axios';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Cart from './Cart'
+import NavBar from './Navbar';
+import Checkout from './Checkout';
 
 
 const BASE_ORDER_URL = "http://localhost:3000/api/order/"
@@ -25,7 +27,6 @@ class Order extends React.Component {
     // }
 
     state = {
-        name: '',
         address: '',
         payment: '',
         error: '',
@@ -33,20 +34,10 @@ class Order extends React.Component {
         cart: []
     };
 
-    handleInputName = (ev) => {
-        // console.log('input', ev.target.value);
-        this.setState({ name: ev.target.value })
-    }
-
     handleInputAddress = (ev) => {
         // console.log('input', ev.target.value);
         this.setState({ address: ev.target.value })
     }
-    handleInputPayment = (ev) => {
-        // console.log('input', ev.target.value);
-        this.setState({ payment: ev.target.value })
-    }
-
 
     handleSubmit = async (ev) => {
         ev.preventDefault();
@@ -56,6 +47,7 @@ class Order extends React.Component {
         try{
             const orderRes = await axios.post(`http://localhost:3000/orders`, this.state)
             console.log('Order Create Response', orderRes.data)
+            this.props.history.push(`/orders/${orderRes.data.id}`)
           }catch(err){
             console.log('Error Creating Order', err)
           }
@@ -86,14 +78,11 @@ class Order extends React.Component {
             <div>
             <h2></h2>
             <Cart hideEditControls={true} /> 
-
                 <h4>Order Details:</h4>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="name" onChange={this.handleInputName} />
-                    <br /><br />
+                    <strong>Address</strong>
+                    <br/>
                     <input type="text" placeholder="address" onChange={this.handleInputAddress} />
-                    <br /><br />
-                    <input type="text" placeholder="payment type" onChange={this.handleInputPayment} />
                     <br /><br />
                     <button>Finalise Payment</button>
 

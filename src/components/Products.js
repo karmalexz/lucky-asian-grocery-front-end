@@ -9,6 +9,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import { cld } from '../config/index'
 
 const BASE_PRODUCTS_URL = 'http://localhost:3000/api/products';
+//replace base url with livelink from heroku to get the images
 
 
 class Products extends React.Component {
