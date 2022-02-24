@@ -176,7 +176,7 @@ class Cart extends React.Component {
 
         {cartList}
 
-        <form onSubmit={this.updateCart}>
+        <form onSubmit={this.handleSubmit}>
           <button type="submit">Checkout</button>
         </form>
 
