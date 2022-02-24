@@ -76,7 +76,7 @@ class Home extends React.Component {
                 </div>
             </nav>
           <Route path="/"  component={NavBar} />
-          <Route path="/login"  component={Login} />
+          {/* <Route path="/login"  component={Login} /> */}
 
           <Route exact path="/products" component={Products}/>
           <Route exact path="/categories" component={Categories}/>
