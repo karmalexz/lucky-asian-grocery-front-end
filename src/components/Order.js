@@ -31,6 +31,7 @@ class Order extends React.Component {
         error: '',
         loading: '',
         cart: []
+
     };
 
     handleInputName = (ev) => {
@@ -62,21 +63,20 @@ class Order extends React.Component {
 
     } //handleSubmit()
 
+    fetchCart = async () => {
 
-    // fetchCart = async () => {
-
-    //     try{
-    //         const res = await axios.get(BASE_ORDER_URL);
-    //         console.log('CART response:', res.data);
-    //         // debugger;
-    //         this.setState({
-    //             cart: res.data
-    //         });
-    //     } catch(err){
-    //         console.log('Error Loading AJAX', err);
-    //         // this.setState({error: err});
-    //     }
-    // }; //fetchFlights()
+        try{
+            const res = await axios.get(BASE_ORDER_URL);
+            console.log('CART response:', res.data);
+            // debugger;
+            this.setState({
+                cart: res.data
+            });
+        } catch(err){
+            console.log('Error Loading AJAX', err);
+            // this.setState({error: err});
+        }
+    }; //fetch
 
     render() {
 
