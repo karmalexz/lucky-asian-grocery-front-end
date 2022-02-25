@@ -30,8 +30,30 @@
 
 .checkoutButton{
   margin: 10px;
-  font-size: 24px;
+  font-size: 14px;
   padding: 10px;
   border-radius: 5px;
   background-color: rgb(227, 163, 79);
+}
+
+.orderForm{
+  text-align: center;
+}
+
+.formField{
+  text-align: center;
+}
+
+.buttonFinal{
+  padding: 7px 20px 7px 20px;
+  border-radius: 7px;
+  background-color: rgb(227, 163, 79);
+}
+.orderTextfield{
+  padding: 10px;
+}
+
+.orderName{
+  
+ color: yellow;
 }

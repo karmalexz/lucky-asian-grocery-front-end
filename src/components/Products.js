@@ -59,11 +59,12 @@ class Products extends React.Component {
     }
 
     const productsList = products.map(p =>
-      <li key={p.id}>
-        <strong>Name:</strong> {p.name} <br />
-        <strong>Description:</strong> {p.description} <br />
-        <strong>Price:</strong> {p.price} <br />
-        <strong>Stock:</strong> {p.stock} <br />
+      <li className='productIndexLi' key={p.id}>
+       <strong> {p.name} </strong>
+        <br />
+    
+        <strong>Price:</strong> ${p.price} <br />
+        
 
 
         <Link to={`/products/${p.id}`}>
