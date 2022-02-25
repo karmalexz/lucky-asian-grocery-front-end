@@ -156,3 +156,11 @@
   width: 100%;
   /* transition: 0s; */
 }
+
+
+.checkoutTagline{
+  margin-top: 10%;
+  background-color: red;
+  color: yellow;
+  text-align: center;
+}

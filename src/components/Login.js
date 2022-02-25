@@ -52,7 +52,7 @@ class Login extends React.Component {
             onChange={this.handleInput}
             name="email"
             type="email"
-            value="steven@ga.co"
+            // value="steven@ga.co"
             placeholder='Enter Email'
             />
           <br/>
@@ -60,7 +60,7 @@ class Login extends React.Component {
             onChange={this.handleInput}
             name="password"
             type="password"
-            value="chicken"
+            // value="chicken"
             placeholder='Enter Password'
             />
           <br/>
