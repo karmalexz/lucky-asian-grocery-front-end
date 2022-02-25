@@ -5,7 +5,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Cart from './Cart'
 import NavBar from './Navbar';
 import Checkout from './Checkout';
-
+import './Cart.css'
 
 const BASE_ORDER_URL = "http://localhost:3000/api/order/"
 class Order extends React.Component {
@@ -76,39 +76,40 @@ class Order extends React.Component {
 
         return (
 
-            <div>
-            <h2></h2>
+            <div className='formField'>
+            
             <Cart hideEditControls={true} /> 
-                <h4>Order Details:</h4>
+                <h4 className='orderName'>Order Details:</h4>
                 {
                     this.state.order.id
                     ?
                     <form onSubmit={this.handleCreditCard}>
                         <strong>Credit Card Details</strong>
                         <br/>
-                        <input type="text" placeholder="Credit Card Details" onChange={this.handleCreditCardDetails}/>
+                        <input className='orderTextfield' type="text" placeholder="Credit Card Details" onChange={this.handleCreditCardDetails}/>
                         <br/>
                         <strong>Expiry Date</strong>
                         <br/>
-                        <input type="text" placeholder="Expiry Date" onChange={this.handleExpiryDate}/>
+                        <input className='orderTextfield' type="text" placeholder="Expiry Date" onChange={this.handleExpiryDate}/>
                         <br/>
 
-                        <button>Purchase Asian Goodies</button>
+                        <button className='buttonFinal'>Purchase Asian Goodies</button>
                 
                     </form>   
                     :
+                    
                     <form onSubmit={this.handleSubmit}>
                         <strong>Address</strong>
                         <br/>
-                        <input type="text" placeholder="address" onChange={this.handleInputAddress} />
+                        <input className='orderTextfield' type="text" placeholder="address" onChange={this.handleInputAddress} />
                         <br /><br />
-                        <button>Finalise Payment</button>
+                        <button className='buttonFinal'>Finalise Payment</button>
                         <br/>
 
                     </form>
                 }
-                
-                
+            
+
             </div>
 
         ) //return

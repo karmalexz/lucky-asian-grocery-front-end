@@ -59,11 +59,12 @@ class Products extends React.Component {
     }
 
     const productsList = products.map(p =>
-      <li key={p.id}>
-        <strong>Name:</strong> {p.name} <br />
-        <strong>Description:</strong> {p.description} <br />
-        <strong>Price:</strong> {p.price} <br />
-        <strong>Stock:</strong> {p.stock} <br />
+      <li className='productIndexLi' key={p.id}>
+       <strong> {p.name} </strong>
+        <br />
+    
+        <strong>Price:</strong> ${p.price} <br />
+        
 
 
         <Link to={`/products/${p.id}`}>
@@ -82,7 +83,7 @@ class Products extends React.Component {
       //loop copy line item to order line items
     return (
       <div>
-        <h1>All Products</h1>
+
         <ul>
           {
             this.state.loading
