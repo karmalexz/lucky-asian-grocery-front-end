@@ -3,58 +3,72 @@ import '../App.css';
 import axios from 'axios';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
-const BASE_CHECKOUT_URL = "http://localhost:3000/api/order/"
+const BASE_CHECKOUT_URL = "http://localhost:3000/orders/"
 
 class Checkout extends React.Component{
 
 
-    state = {
-        creditCardDetails: '',
-        expiryDate: '',
-        creditCardValid: false,
-        expiryDateValid: false
+    // state = {
+    //     creditCardDetails: '',
+    //     expiryDate: '',
+    //     creditCardValid: false,
+    //     expiryDateValid: false
 
-    }
+    // }
 
-    componentDidMount(){
+    // componentDidMount(){
         
-        this.fetchCart();
-        console.log("WHAT", this.props.match)
-    }
+    //     this.fetchCart();
+    //     // console.log("WHAT", this.props.match)
+    // }
 
-    handleCreditCardDetails = (ev) => {
-        if(ev.target.value.length < 0){ //dummy conditional
-            window.location.reload(true)
-        }else{
-        this.setState({creditCardDetails: ev.target.value})
-        this.setState({creditCardDetails: true})
-    }}
+    // handleCreditCardDetails = (ev) => {
+    //     if(ev.target.value.length < 0){ //dummy conditional
+    //         window.location.reload(true)
+    //     }else{
+    //     this.setState({creditCardDetails: ev.target.value})
+    //     this.setState({creditCardDetails: true})
+    // }}
 
-    handleExpiryDate = (ev) => {
-        if(ev.target.value.length < 0){ //dummy conditional
-            window.location.reload(true)
-        }else{
-        this.setState({expiryDate: ev.target.value})
-        this.setState({expiryDateValid: true})
-    }}
+    // handleExpiryDate = (ev) => {
+    //     if(ev.target.value.length < 0){ //dummy conditional
+    //         window.location.reload(true)
+    //     }else{
+    //     this.setState({expiryDate: ev.target.value})
+    //     this.setState({expiryDateValid: true})
+    // }}
     
-    fetchCart = async () => {
-    // console.log("params". this.props)
-    try {
-        const res = await axios.get(BASE_CHECKOUT_URL + this.props.match.params.order_line_items_id)
-        console.log('Check this Response', res.data)
-    } catch (err) {
-        console.log('Error with AJAX', err)
+    // fetchCart = async () => {
+    // // console.log("params". this.props)
+    // try {
+    //     const res = await axios.get(BASE_CHECKOUT_URL + this.props.match.params.order_line_items_id)
+    //     console.log('Check this Response', res.data)
+    // } catch (err) {
+    //     console.log('Error with AJAX', err)
 
-    }} //fetchCart()
+    // }} //fetchCart()
 
-    handleSubmit = async(ev) => {
-        ev.preventDefault();
-        // this.setState({status: paid})
-        // this.props.history.push(`/order/add/`);
+    // handleSubmit = async(ev) => {
+    //     ev.preventDefault();
+    //     // this.updateOrderLineItem()
+    //     // this.setState({status: paid})
+    //     // this.props.history.push(`/order/add/`);
 
 
-    }
+    // }
+
+    // updateOrderLineItem = async () => {
+    //     this.setState({loading: true})
+    
+    //     try{
+    //       const updateRes = await axios.post(`http://localhost:3000/api/order/add/`)
+    //       //need cart_line_items_id
+
+    //       console.log('update Order Line Item', updateRes.data)
+    //     }catch(err){
+    //       console.log('Error loading AJAX')
+    //     }
+    // }
 
     
     render(){
@@ -62,25 +76,13 @@ class Checkout extends React.Component{
 
 
         return(
-        <div >
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-
-            <form onSubmit={this.handleSubmit}>
-                <strong>Credit Card Details</strong>
-                <br/>
-                <input type="text" placeholder="Credit Card Details" onChange={this.handleCreditCardDetails}/>
-                <br/>
-                <strong>Expiry Date</strong>
-                <br/>
-                <input type="text" placeholder="Expiry Date" onChange={this.handleExpiryDate}/>
-                <br/>
-
-                <button>Purchase Asian Goodies</button>
-                
-            </form>   
+        <div className='checkoutTagline'>
+            <h1>XI JING PING THANKS YOU FOR THE CONTRIBUTION TO OUR COUNTRY</h1>
+            <h1>XI JING PING THANKS YOU FOR THE CONTRIBUTION TO OUR COUNTRY</h1>
+            <h1>XI JING PING THANKS YOU FOR THE CONTRIBUTION TO OUR COUNTRY</h1>
+            <h1>XI JING PING THANKS YOU FOR THE CONTRIBUTION TO OUR COUNTRY</h1>
+            <h1>XI JING PING THANKS YOU FOR THE CONTRIBUTION TO OUR COUNTRY</h1>
+            <h1>XI JING PING THANKS YOU FOR THE CONTRIBUTION TO OUR COUNTRY</h1>
         </div>
         )
 

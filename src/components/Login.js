@@ -32,7 +32,7 @@ class Login extends React.Component {
       localStorage.setItem("jwt", result.data.jwt)
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + result.data.jwt;
       this.props.setCurrentUser();
-      this.props.history.push('/my_profile');
+      this.props.history.push('/products');
     })
     .catch(err => {
       console.warn(err)
@@ -52,6 +52,7 @@ class Login extends React.Component {
             onChange={this.handleInput}
             name="email"
             type="email"
+            // value="steven@ga.co"
             placeholder='Enter Email'
             />
           <br/>
@@ -59,6 +60,7 @@ class Login extends React.Component {
             onChange={this.handleInput}
             name="password"
             type="password"
+            // value="chicken"
             placeholder='Enter Password'
             />
           <br/>

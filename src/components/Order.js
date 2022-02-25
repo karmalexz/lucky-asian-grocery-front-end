@@ -31,9 +31,11 @@ class Order extends React.Component {
         payment: '',
         error: '',
         loading: '',
-        cart: []
+        order: {}
 
     };
+
+    
 
     handleInputAddress = (ev) => {
         // console.log('input', ev.target.value);
@@ -42,33 +44,32 @@ class Order extends React.Component {
 
     handleSubmit = async (ev) => {
         ev.preventDefault();
-        console.log('submit', this.state);
+        console.log('submit address', this.state);
         // this.fetchCart();
         //axios request to backend
         try{
             const orderRes = await axios.post(`http://localhost:3000/orders`, this.state)
-            console.log('Order Create Response', orderRes.data)
-            this.props.history.push(`/orders/${orderRes.data.id}`)
+            console.log('Order Create Response FOR ADDRESS', orderRes.data)
+            this.setState({order: orderRes.data});
           }catch(err){
             console.log('Error Creating Order', err)
           }
 
     } //handleSubmit()
 
-    fetchCart = async () => {
-
+    handleCreditCard = async (ev) => {
+        ev.preventDefault();
+        console.log('submit credit card', this.state);
         try{
-            const res = await axios.get(BASE_ORDER_URL);
-            console.log('CART response:', res.data);
-            // debugger;
-            this.setState({
-                cart: res.data
-            });
-        } catch(err){
-            console.log('Error Loading AJAX', err);
-            // this.setState({error: err});
-        }
-    }; //fetch
+            const orderRes = await axios.patch(`http://localhost:3000/orders/${this.state.order.id}`)
+            console.log('Order Create Response FOR CREDIT CARD', orderRes.data)
+            this.props.history.push('/checkout')
+            // this.setState({order: orderRes.data});
+          }catch(err){
+            console.log('Error Creating Order', err)
+          }
+
+    } //handleSubmit()
 
     render() {
 
@@ -78,33 +79,42 @@ class Order extends React.Component {
             <div className='formField'>
             
             <Cart hideEditControls={true} /> 
-                <h4 className='orderName' >Order Details:</h4>
-                <form onSubmit={this.handleSubmit}>
-                    <br/>
-                    <input className='orderTextfield' type="text" placeholder="address" onChange={this.handleInputAddress} />
-                    <br /><br />
-                    <button className='buttonFinal'>Finalise Payment</button>
+                <h4 className='orderName'>Order Details:</h4>
+                {
+                    this.state.order.id
+                    ?
+                    <form onSubmit={this.handleCreditCard}>
+                        <strong>Credit Card Details</strong>
+                        <br/>
+                        <input className='orderTextfield' type="text" placeholder="Credit Card Details" onChange={this.handleCreditCardDetails}/>
+                        <br/>
+                        <strong>Expiry Date</strong>
+                        <br/>
+                        <input className='orderTextfield' type="text" placeholder="Expiry Date" onChange={this.handleExpiryDate}/>
+                        <br/>
 
-                </form>
+                        <button className='buttonFinal'>Purchase Asian Goodies</button>
+                
+                    </form>   
+                    :
+                    
+                    <form onSubmit={this.handleSubmit}>
+                        <strong>Address</strong>
+                        <br/>
+                        <input className='orderTextfield' type="text" placeholder="address" onChange={this.handleInputAddress} />
+                        <br /><br />
+                        <button className='buttonFinal'>Finalise Payment</button>
+                        <br/>
+
+                    </form>
+                }
+            
 
             </div>
 
-
-
         ) //return
 
-
-
-
-
-
-
-
     }//render()
-
-
-
-
 
 }
 export default Order
