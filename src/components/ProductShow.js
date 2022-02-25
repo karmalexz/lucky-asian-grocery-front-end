@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import '../App.css';
+
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 // import { Cloudinary } from "@cloudinary/url-gen";
 import { cld } from '../config/index'
@@ -76,8 +76,18 @@ class ProductShow extends React.Component {
             <div className='showProduct'>
 
                 <h2>{name}</h2>
-        <AdvancedImage cldImg={(myImage)} />
-               
+
+                {/* {
+                    { image }.startsWith('IMG_')
+                        ?
+                        <img className="cartImage" src={`http://localhost:3000/assets/${image}`} alt={name} />
+                        :
+                        <AdvancedImage cldImg={cld.image(image)} />
+                }
+ */}
+
+                <AdvancedImage cldImg={(myImage)} />
+
                 <br />
                 <strong>Description</strong>
                 <p>{description}</p>
