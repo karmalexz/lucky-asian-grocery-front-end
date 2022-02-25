@@ -82,7 +82,7 @@ class Products extends React.Component {
       //loop copy line item to order line items
     return (
       <div>
-        <h1>All Products</h1>
+
         <ul>
           {
             this.state.loading

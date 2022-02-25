@@ -7,8 +7,8 @@ body{
   /* background-color: red; */
   background-image:url("/public/background2.png") ;
   /* overflow: hidden; */
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: unset;
+  background-size: auto;
 }
 .form-box{
   position: relative;

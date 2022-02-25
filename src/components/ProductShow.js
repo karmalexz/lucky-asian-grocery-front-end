@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-
+// import '../App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 // import { Cloudinary } from "@cloudinary/url-gen";
 import { cld } from '../config/index'
@@ -18,7 +18,7 @@ class ProductShow extends React.Component {
     state = {
         resultsProduct: {},
         error: null,
-        loading: false
+        loading: true
 
     }
     componentDidMount() {
@@ -40,6 +40,8 @@ class ProductShow extends React.Component {
             this.setState({ error: err, loading: false });
         }
 
+        
+
     };//revealProduct()
 
     handleSubmit = async (ev) => {
@@ -57,36 +59,46 @@ class ProductShow extends React.Component {
 
 
     render() {
+        
+        if (this.state.loading === true){
+            return <h2>Loading Product...</h2>
+        }
+
         const myImage = cld.image(this.state.resultsProduct.image)
 
         const { name, description, image, price, stock } = this.state.resultsProduct;
 
+        console.log('SEE IMAGE', this.state.resultsProduct)
+        
         // const {loading, error, resultsProduct} = this.state
         // console.log("resultsProduct", this.state.resultsProduct.name)
         if (this.state.error) {
             return <p>Error loading</p>
         }
+        
+        
 
 
         return (
 
-
-            // https://res.cloudinary.com/christekh/image/upload/${data.public_id}.jpg
+            
+            
 
             <div className='showProduct'>
 
                 <h2>{name}</h2>
 
-                {/* {
-                    { image }.startsWith('IMG_')
-                        ?
-                        <img className="cartImage" src={`http://localhost:3000/assets/${image}`} alt={name} />
-                        :
-                        <AdvancedImage cldImg={cld.image(image)} />
-                }
- */}
+            {
+                image.startsWith('IMG_')
+                ?
+                <img className="cartImage" src={`http://localhost:3000/assets/${image}`} alt={name}/>
+                :
+                <AdvancedImage cldImg={cld.image(image)} />
+            }
 
-                <AdvancedImage cldImg={(myImage)} />
+          
+
+                {/* <AdvancedImage cldImg={(myImage)} /> */}
 
                 <br />
                 <strong>Description</strong>
