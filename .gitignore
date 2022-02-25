@@ -1,5 +1,5 @@
 .directory
-
+.env
 ### OSX ###
 .DS_Store
 .AppleDouble
@@ -54,3 +54,6 @@ node_modules/
 
 # Ignore master key for decrypting credentials and more.
 **/config/master.key
+
+# Local Netlify folder
+.netlify
