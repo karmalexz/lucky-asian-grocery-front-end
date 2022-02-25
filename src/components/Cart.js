@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import '../App.css';
+import './Cart.css';
 
 const BASE_CART_URL = "http://localhost:3000/api/cart";
 
@@ -200,21 +200,21 @@ class Cart extends React.Component {
     const cartList = cart.map(c => (
 
       // console.log('Check image', this.matchImage(c.product_id).image)
-      <li key={c.id}>
+      <li className='cartcss' key={c.id}>
         <img className="cartImage" src={`http://localhost:3000/assets/${c.product.image}`} alt="productName" />
-        <p>Name:{c.product.name}</p>
-        <p>Price:{c.product.price}</p>
+        <p>{c.product.name}</p>
+        <p>${c.product.price}</p>
 
-        <div>
+        <div className='cartIndex'>
 
           <p>
-            {this.props.hideEditControls || <button onClick={() => this.onClickMinus(c.id)}>-</button>}
+            {this.props.hideEditControls || <button className='cartButton' onClick={() => this.onClickMinus(c.id)}>-</button>}
             QTY:{c.qty}
-            {this.props.hideEditControls || <button onClick={() => this.onClickPlus(c.id)}>+</button>}
+            {this.props.hideEditControls || <button className='cartButton' onClick={() => this.onClickPlus(c.id)}>+</button>}
           </p>
           
           <br />
-          {this.props.hideEditControls || <button onClick={() => this.onClickRemove(c.id)}>Remove Item</button>}
+          {this.props.hideEditControls || <button className='cartRemoveButton' onClick={() => this.onClickRemove(c.id)}>Remove Item</button>}
 
         </div>
 
@@ -224,12 +224,12 @@ class Cart extends React.Component {
     )
 
     return (
-      <div>
+      <div className='checkout'>
 
         {this.props.hideProductPage || cartList}
 
         {this.props.hideEditControls || <form onSubmit={this.handleSubmit}>
-          <button type="submit">Checkout</button>
+          <button className='checkoutButton' type="submit">Checkout</button>
         </form>}
 
       </div>
