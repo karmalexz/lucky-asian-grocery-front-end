@@ -84,7 +84,7 @@ class Home extends React.Component {
           <Route exact path="/products/:id"  component={ProductShow} />
           <Route exact path="/cart"  component={Cart} />
           <Route exact path="/orders"  component={Order} />
-          <Route exact path="/orders/:order_line_items_id"  component={Checkout} />
+          <Route exact path="/checkout"  component={Checkout} />
 
 
           {/* <Route exact path="/cart/add/:product_id"  component={Cart} /> */}
@@ -97,6 +97,15 @@ class Home extends React.Component {
             )}
           />
         </Router>
+
+        <footer>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+
+        </footer>
       </div>
     );
   }
